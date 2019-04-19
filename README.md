@@ -1,7 +1,6 @@
 # final_project
 
-SETUP
-#
+# SETUP
 This is a slightly confusing installation process, but here it goes. First, the official reinforcement learning to run github repository
 is found here (https://github.com/stanfordnmbl/osim-rl). The README includes the first set of installation instructions: follow the
 directions up until the "Basic Usage" section. Make sure that you have the "opensim-rl" environment activated when you are running any 
