@@ -20,10 +20,11 @@ reinforcement learning optimizers (DDPG and PPO) have been uploaded here: https:
 To use these methods, you must download the DDPG package "keras" and the PPO package "TensorForce". To install these packages, 
 use the commands:
 
+####
 conda install keras
 pip install keras-rl
 pip install TensorForce
-
+####
 After downloading the repository, you can test to make sure it's working correctly by typing the following code into the command line:
 ###
 ./run.py RandomAgent -v
@@ -38,7 +39,7 @@ or,
 ####
 ./run.py TensorForcePP0Agent --train 10000
 ####
-Where "--train #" specified the number of training steps.
+Where "--train #" specifies the number of training steps.
 
 Now the optimization parameters and reward function can can be edited to train the model to walk! To visualize the simulation after 
 training an agent, type "-v" after the agent name on the command line.
