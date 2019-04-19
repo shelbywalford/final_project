@@ -69,3 +69,4 @@ class KerasDDPGAgent(KerasAgent):
         self.agent.compile(optimizer=opt,metrics=['accuracy'])
 
         self.filename = filename
+        
