@@ -1,6 +1,6 @@
 # final_project
 
-# SETUP
+# Setup
 This is a slightly confusing installation process, but here it goes. First, the official reinforcement learning to run github repository
 is found here (https://github.com/stanfordnmbl/osim-rl). The README includes the first set of installation instructions: follow the
 directions up until the "Basic Usage" section. Make sure that you have the "opensim-rl" environment activated when you are running any 
@@ -47,5 +47,5 @@ Where "--train #" specifies the number of training steps.
 
 Now the optimization parameters and reward function can can be edited to train the model to walk! To visualize the simulation after 
 training an agent, type "-v" after the agent name on the command line.
-# UPLOADED FILES
-We're currently making changes to the optimization parameters in the Keras Agent file and the reward function in the osim file. 
+# Uploaded Files
+We're currently making changes to the optimization parameters in the KerasAgentDDPG file, and the reward function in the osim file. 
