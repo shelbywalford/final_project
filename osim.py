@@ -663,3 +663,5 @@ class Arm2DEnv(OsimEnv):
         # print(state_desc["markers"]["r_radius_styloid"]["pos"])
         # print((self.target_x, self.target_y))
         return 1.-penalty
+    
+   
