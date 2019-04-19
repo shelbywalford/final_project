@@ -26,7 +26,9 @@ conda install keras
 pip install keras-rl
 pip install TensorForce
 ####
-#Training and Visualization
+
+# Training and Visualization
+
 After downloading the repository, you can test to make sure it's working correctly by typing the following code into the command line:
 ###
 ./run.py RandomAgent -v
