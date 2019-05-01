@@ -1,0 +1,1 @@
+These agents have already been trained under various conditions. Download them into your opensim-rl environment and save as "KerasDDPGAgent.h5f" to test, visualize, or continue to train them. 
