@@ -7,14 +7,14 @@ directions up until the "Basic Usage" section. Make sure that you have the "open
 future commands.
 
 Then, I would suggest copying and pasting the following code into the command line to make sure things are running as they should be:
-###
+
 from osim.env import ProstheticsEnv
 
 env = ProstheticsEnv(visualize=True)
 observation = env.reset()
 for i in range(200):
     observation, reward, done, info = env.step(env.action_space.sample())
-###
+
 
 This includes the basic model that we are training to run. Next, the github repository that contains helper files that set up two 
 reinforcement learning optimizers (DDPG and PPO) have been uploaded here: https://github.com/seungjaeryanlee/osim-rl-helper. 
