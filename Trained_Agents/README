@@ -1,1 +1,2 @@
 These agents have already been trained under various conditions. Download them into your opensim-rl environment and save as "KerasDDPGAgent.h5f" to test, visualize, or continue to train them. 
+ Filenames indicate how many episodes they have trained. "onoff" indicates that a muscle was restricted to a binary activation of 0 and 1 or 0 and .5. 
