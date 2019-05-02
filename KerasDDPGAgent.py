@@ -1,7 +1,7 @@
 from keras.models import Sequential, Model
 from keras.layers import Dense, Activation, Flatten, Input, concatenate
 from keras.optimizers import Adam, RMSprop
-
+import numpy as np
 from rl.agents import DDPGAgent
 from rl.memory import SequentialMemory
 from rl.random import OrnsteinUhlenbeckProcess
@@ -18,19 +18,16 @@ class KerasDDPGAgent(KerasAgent):
     https://arxiv.org/abs/1509.02971
     """
     def __init__(self, observation_space, action_space, filename='KerasDDPGAgent.h5f'):
+        #from keras.layers.normalization import BatchNormalization       
         nb_actions = action_space.shape[0]
 
         # Actor network
         actor = Sequential()
         actor.add(Flatten(input_shape=(1,) + observation_space.shape))
-        actor.add(Dense(32))
-        actor.add(Activation('relu'))
-        actor.add(Dense(32))
-        actor.add(Activation('relu'))
-        actor.add(Dense(32))
-        actor.add(Activation('relu'))
-        actor.add(Dense(nb_actions))
-        actor.add(Activation('sigmoid'))
+        actor.add(Dense(32),activation='selu'))
+        actor.add(Dense(32),activation='selu')
+        actor.add(Dense(32),activation='selu')
+        actor.add(Dense(nb_actions),activation='sigmoid')      
         print(actor.summary())
 
         # Critic network
@@ -39,11 +36,11 @@ class KerasDDPGAgent(KerasAgent):
         flattened_observation = Flatten()(observation_input)
         x = concatenate([action_input, flattened_observation])
         x = Dense(64)(x)
-        x = Activation('relu')(x)
+        x = Activation('tanh')(x)
         x = Dense(64)(x)
-        x = Activation('relu')(x)
+        x = Activation('tanh')(x)
         x = Dense(64)(x)
-        x = Activation('relu')(x)
+        x = Activation('tanh')(x)
         x = Dense(1)(x)
         x = Activation('linear')(x)
         critic = Model(inputs=[action_input, observation_input], outputs=x)
@@ -51,8 +48,8 @@ class KerasDDPGAgent(KerasAgent):
 
         # Setup Keras RL's DDPGAgent
         memory = SequentialMemory(limit=100000, window_length=1)
-        random_process = OrnsteinUhlenbeckProcess(theta=.15, mu=0., sigma=.2,n_steps_annealing=10000,
-                                                  size=nb_actions)
+        random_process = OrnsteinUhlenbeckProcess(theta=.1, mu=0., sigma=.2, 
+                dt=1e-2,size=nb_actions,sigma_min=.05,n_steps_annealing=1e6)
         self.agent = DDPGAgent(nb_actions=nb_actions,
                           actor=actor,
                           critic=critic,
@@ -61,12 +58,11 @@ class KerasDDPGAgent(KerasAgent):
                           nb_steps_warmup_critic=100,
                           nb_steps_warmup_actor=100,
                           random_process=random_process,
-                          gamma=.99,
-                          target_model_update=1e-3,
+                          gamma=.96,
+                          target_model_update=1e-4,
                           delta_clip=1.)
-        #self.agent.compile(Adam(lr=.001, clipnorm=1.), metrics=['mae'])
-        opt=RMSprop(lr=0.001,decay=1e-5)
-        self.agent.compile(optimizer=opt,metrics=['accuracy'])
+        #opt=RMSprop(lr=0.001,decay=0)
+        opt=Adam(lr=3e-4,clipnorm=1.)
+        self.agent.compile(optimizer=opt,metrics=['mae'])
 
         self.filename = filename
-        
