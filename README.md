@@ -48,6 +48,8 @@ training an agent, type "-v" after the agent name on the command line.
 3. osim.py - this file wraps up all the opensim-related classes and OpenAI gym functionality in one place. Here, we have made changes to the reward function in the prosthetics environment (line 601).
 4. random.py - this file contains the Ohrnstein Uhlenbeck process used by the DDPG agent. We amended the code to restrict the muscle activations to be either "on" or "off". 
 
+Replace the files in the opensim-rl helper package and osim-rl environment with these to replicate our processes. 
+
 # Link to final presentation
 For more information about our methods, results, and problem solving process, check out our slides:
 https://docs.google.com/presentation/d/1azvuzdV-xtf-K_CJcP78M6ERknnE5mHd8BVQzkBCd1U/edit?usp=sharing
