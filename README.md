@@ -43,4 +43,7 @@ Where "--train #" specifies the number of training steps.
 Now the optimization parameters and reward function can can be edited to train the model to walk! To visualize the simulation after 
 training an agent, type "-v" after the agent name on the command line.
 # Uploaded Files
-We're currently making changes to the optimization parameters in the KerasAgentDDPG file, and the reward function in the osim file. 
+1. KerasDDPGAgent - this file contains our edited version of Seungjae Ryan Lee's DDPG agent template. Our amendments include changing the activation functions and learning rate, and changing the standard deviation used by the Ohrstein Uhlenbeck process. 
+2. TensorforcePPOAgent - this file contains our edited version of Seungjae Ryan Lee's PPO agent template. Our amendments include changing the muscle activation to be either "on" or "off" and reducing the learning rate. 
+3. osim.py - this file wraps up all the opensim-related classes and OpenAI gym functionality in one place. Here, we have made changes to the reward function in the prosthetics environment (line 601).
+4. random.py - this file contains the Ohrnstein Uhlenbeck process used by the DDPG agent. We amended the code to restrict the muscle activations to be either "on" or "off". 
