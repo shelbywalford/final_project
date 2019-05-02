@@ -47,6 +47,7 @@ training an agent, type "-v" after the agent name on the command line.
 2. TensorforcePPOAgent - this file contains our edited version of Seungjae Ryan Lee's PPO agent template. Our amendments include changing the muscle activation to be either "on" or "off" and reducing the learning rate. 
 3. osim.py - this file wraps up all the opensim-related classes and OpenAI gym functionality in one place. Here, we have made changes to the reward function in the prosthetics environment (line 601).
 4. random.py - this file contains the Ohrnstein Uhlenbeck process used by the DDPG agent. We amended the code to restrict the muscle activations to be either "on" or "off". 
+5. Trained agents - contains trained KerasDDPG and TensorforcePPO agents trained under various conditions. 
 
 Replace the files in the opensim-rl helper package and osim-rl environment with these to replicate our processes. 
 
