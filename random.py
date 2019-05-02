@@ -50,10 +50,12 @@ class OrnsteinUhlenbeckProcess(AnnealedGaussianProcess):
         self.reset_states()
 
     def sample(self):
+        
+        # the KerasDDPG is currently set to use a 0 or 1 activation. To switch back to the Ornstein Uhlenbeck Process, switch which "x" is commented out.
+        
         x = np.random.randint(0,2,size=self.size)
         #x = self.x_prev + self.theta * (self.mu - self.x_prev) * self.dt + self.current_sigma * np.sqrt(self.dt) * np.random.normal(size=self.size)
-
-        #x=np.random.randint(0,1)
+        
         self.x_prev = x
         self.n_steps += 1
         return x
